@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Feast After the Feast: Food Waste at Celebrations</title>
+<meta name="description" content="How food wasted at weddings, festivals and parties affects the environment and natural resources over the long term.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#140f1f;--bg2:#1e1630;--cream:#fff4e0;--mute:#c9bcd9;--gold:#ffb627;--pink:#ff4d6d;--leaf:#7bd389;--rot:#8a6a4a}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font:400 1.05rem/1.65 'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.05}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+main,header,footer{position:relative;z-index:1}
+a{color:var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:1rem 5vw;background:linear-gradient(var(--bg),transparent)}
+nav b{font-family:'Fraunces',serif;font-size:1.2rem}
+nav div a{margin-left:1.4rem;color:var(--cream);text-decoration:none;font-weight:500;font-size:.95rem}
+nav div a:hover{color:var(--gold)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 5vw}
+.hero h1{font-size:clamp(3rem,9vw,8rem);font-weight:800;max-width:11ch;letter-spacing:-.02em}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(60px) rotateX(-70deg);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p{max-width:34rem;margin-top:1.5rem;color:var(--mute);font-size:1.2rem}
+.btn{display:inline-block;margin-top:2rem;padding:.9rem 1.6rem;border-radius:99px;background:var(--gold);color:#241500;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 10px 30px #ffb62755}
+section{padding:14vh 5vw}
+.wrap{max-width:1100px;margin:0 auto}
+h2{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;max-width:16ch;margin-bottom:1.2rem}
+.lead{color:var(--mute);max-width:40rem;margin-bottom:3rem}
+.panel{background:rgba(20,15,31,.78);backdrop-filter:blur(10px);border-radius:28px;padding:clamp(1.5rem,4vw,3.5rem)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.stat b{display:block;font-family:'Fraunces',serif;font-size:clamp(2.6rem,5vw,4rem);color:var(--gold);line-height:1}
+.stat span{color:var(--mute);font-size:.95rem}
+.src{font-size:.82rem;color:var(--mute);margin-top:2rem}
+.path{position:relative;display:grid;gap:1.5rem;padding-left:2.2rem}
+.path::before{content:"";position:absolute;left:.55rem;top:.5rem;bottom:.5rem;width:3px;background:linear-gradient(var(--gold),var(--pink),var(--rot));border-radius:3px}
+.step{position:relative;background:var(--bg2);padding:1.4rem 1.6rem;border-radius:18px}
+.step::before{content:"";position:absolute;left:-2.1rem;top:1.7rem;width:16px;height:16px;border-radius:50%;background:var(--c);box-shadow:0 0 0 5px var(--bg)}
+.step h3{font-size:1.5rem;margin-bottom:.3rem}
+.step p{color:var(--mute)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;perspective:1000px}
+.card{background:var(--bg2);border-radius:22px;padding:1.8rem;transform-style:preserve-3d;transition:transform .15s;border-top:4px solid var(--c)}
+.card .ic{font-size:2.4rem;transform:translateZ(40px);display:block;margin-bottom:.6rem}
+.card h3{font-size:1.6rem;transform:translateZ(25px);margin-bottom:.5rem}
+.card p{color:var(--mute);font-size:.98rem}
+.card em{display:block;margin-top:1rem;font-style:normal;font-weight:700;color:var(--c)}
+.plate{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.tip{padding:1.2rem 1.4rem;border-radius:16px;background:var(--bg2);border-left:5px solid var(--leaf)}
+.tip b{display:block;margin-bottom:.2rem}
+.tip span{color:var(--mute);font-size:.97rem}
+.meter{margin-top:2rem}
+.meter label{display:block;margin-bottom:.6rem;font-weight:500}
+.meter input{width:100%;accent-color:var(--gold)}
+.out{font-family:'Fraunces',serif;font-size:1.5rem;margin-top:.8rem;color:var(--leaf)}
+footer{padding:8vh 5vw;text-align:center;color:var(--mute);font-size:.92rem;background:var(--bg)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+@media(max-width:640px){nav div a:nth-child(n+3){display:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 span{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="scene" aria-hidden="true"></canvas>
+<nav><b>The Feast After the Feast</b><div><a href="#scale">Scale</a><a href="#journey">Journey</a><a href="#impact">Impact</a><a href="#act">Act</a></div></nav>
+
+<header class="hero">
+<h1 aria-label="The feast after the feast"><span style="animation-delay:.1s">The</span> <span style="animation-delay:.25s">feast</span> <span style="animation-delay:.4s">after</span> <span style="animation-delay:.55s">the</span> <span style="animation-delay:.7s">feast</span></h1>
+<p>Weddings, festivals and family parties are built around abundance. What gets left on the plate does not disappear when the music stops. Scroll and watch the cake and the plate break apart as a planet rises behind them.</p>
+<div><a class="btn" href="#scale">See what it costs</a></div>
+</header>
+
+<main>
+<section id="scale"><div class="wrap panel rv">
+<h2>A plate is the end of a very long chain</h2>
+<p class="lead">Every portion carries the land, water and energy used to grow, transport and cook it. Wasting it wastes all of that.</p>
+<div class="stats">
+<div class="stat"><b data-n="1.05" data-d="2">0</b><span>billion tonnes of food wasted in 2022 (retail, food service and homes)</span></div>
+<div class="stat"><b data-n="19" data-s="%">0</b><span>of the food available to consumers ended up as waste</span></div>
+<div class="stat"><b data-n="8" data-s="–10%">0</b><span>of global greenhouse gas emissions linked to food loss and waste</span></div>
+<div class="stat"><b data-n="783" data-s="M">0</b><span>people faced hunger in 2022</span></div>
+</div>
+<p class="src">Sources: UNEP Food Waste Index Report 2024; FAO. Figures are global and rounded. Check the latest editions before citing.</p>
+</div></section>
+
+<section id="journey"><div class="wrap">
+<h2 class="rv">Where a celebration's food goes</h2>
+<p class="lead rv">Food service and household events are where waste is easiest to prevent, because the surplus is planned in.</p>
+<div class="path">
+<div class="step rv" style="--c:var(--gold)"><h3>Over-ordering</h3><p>Hosts cook for the biggest possible guest list and add extra "to be safe", so surplus is built in before the first guest arrives.</p></div>
+<div class="step rv" style="--c:var(--pink)"><h3>The buffet effect</h3><p>Large platters and big plates encourage people to take more than they eat. Untouched food in open buffets often cannot be reused.</p></div>
+<div class="step rv" style="--c:#d98a5b"><h3>No plan for leftovers</h3><p>Without containers, a donation contact or a pickup arrangement, safe food is thrown out at the end of the night.</p></div>
+<div class="step rv" style="--c:var(--rot)"><h3>Landfill</h3><p>Buried food rots without oxygen and releases methane, a potent greenhouse gas, along with liquid runoff that can pollute soil and water.</p></div>
+</div></div></section>
+
+<section id="impact"><div class="wrap">
+<h2 class="rv">Long-term impact on the planet</h2>
+<p class="lead rv">Hover over the cards. The damage compounds: lost resources, then emissions, then pressure on people.</p>
+<div class="cards rv">
+<div class="card" style="--c:var(--leaf)"><span class="ic">🌾</span><h3>Land</h3><p>Farmland, often cleared from forest, is used to grow food nobody eats. Soil is depleted and habitats are lost for nothing.</p><em>About a quarter or more of farmland feeds waste</em></div>
+<div class="card" style="--c:#4cc9f0"><span class="ic">💧</span><h3>Water</h3><p>Irrigation is the largest use of freshwater. Wasted food means that water, plus the water used in cooking, was spent in vain.</p><em>Meat and dairy waste cost the most water</em></div>
+<div class="card" style="--c:var(--pink)"><span class="ic">🔥</span><h3>Climate</h3><p>Emissions occur at every step, then landfill adds methane. Over decades this speeds up warming and weather extremes.</p><em>Methane traps far more heat than CO₂ in the short term</em></div>
+<div class="card" style="--c:var(--gold)"><span class="ic">🍽️</span><h3>People</h3><p>Surplus that could be rescued sits in bins while millions go hungry, and food prices feel the strain of lost supply.</p><em>Waste and hunger exist side by side</em></div>
+</div></div></section>
+
+<section id="act"><div class="wrap panel rv">
+<h2>Plan the party, not the waste</h2>
+<p class="lead">Small decisions before the event decide how much is left after it.</p>
+<div class="plate">
+<div class="tip"><b>Count guests honestly</b><span>Use RSVPs and plan for actual attendance, not the maximum.</span></div>
+<div class="tip"><b>Serve smaller, refill often</b><span>Smaller plates and staged serving cut over-taking.</span></div>
+<div class="tip"><b>Arrange leftovers early</b><span>Line up a food bank, shelter or rescue group before the event.</span></div>
+<div class="tip"><b>Offer take-home boxes</b><span>Guests happily carry food home when containers are ready.</span></div>
+<div class="tip"><b>Compost the rest</b><span>Inedible scraps become soil instead of methane.</span></div>
+<div class="tip"><b>Cook seasonal and local</b><span>Lower transport emissions and less spoilage.</span></div>
+</div>
+<div class="meter">
+<label for="g">Try it: how many guests are you expecting? <b id="gv">150</b></label>
+<input id="g" type="range" min="20" max="1000" step="10" value="150">
+<div class="out" id="o"></div>
+<p class="src">Illustrative estimate only: assumes ~0.5 kg of food per guest and a 20% cut in surplus through the steps above.</p>
+</div>
+</div></section>
+</main>
+
+<footer>Built for awareness. Made with HTML, CSS and Three.js. Data: UNEP Food Waste Index 2024 and FAO.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ---------- 3D scene ----------
+const cv=document.getElementById('scene');
+if(window.THREE){
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene();S.fog=new THREE.Fog(0x140f1f,8,22);
+const C=new THREE.PerspectiveCamera(45,1,.1,60);C.position.set(0,3.2,8);
+S.add(new THREE.AmbientLight(0xffffff,.55));
+const L1=new THREE.PointLight(0xffb627,1.4,40);L1.position.set(5,6,5);S.add(L1);
+const L2=new THREE.PointLight(0xff4d6d,1.1,40);L2.position.set(-6,2,3);S.add(L2);
+const grp=new THREE.Group();S.add(grp);
+// plate
+const plate=new THREE.Mesh(new THREE.CylinderGeometry(2.6,2.2,.18,64),new THREE.MeshStandardMaterial({color:0xfff4e0,roughness:.3}));
+const rim=new THREE.Mesh(new THREE.TorusGeometry(2.6,.09,16,64),new THREE.MeshStandardMaterial({color:0xffb627,metalness:.6,roughness:.3}));
+rim.rotation.x=Math.PI/2;rim.position.y=.09;grp.add(plate,rim);
+// food pieces: cake, fruit, cupcakes, donuts
+const rotC=new THREE.Color(0x6b5a3e),items=[],flames=[];
+const M=(c,r)=>new THREE.MeshStandardMaterial({color:c,roughness:r||.45});
+function put(g,home,dist){const mats=[];g.traverse(o=>{if(o.isMesh&&!o.userData.keep)mats.push({m:o.material,c:o.material.color.clone()})});
+ g.position.copy(home);const a=Math.atan2(home.z,home.x);
+ items.push({g,home:home.clone(),dir:new THREE.Vector3(Math.cos(a),.3+Math.random()*1.2,Math.sin(a)).normalize(),dist,spin:(Math.random()-.5)*.03,mats});grp.add(g)}
+function cyl(r,h,y,c){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,40),M(c,.35));m.position.y=y;return m}
+function icing(r,y,c){const m=new THREE.Mesh(new THREE.TorusGeometry(r,.07,12,40),M(c,.3));m.rotation.x=Math.PI/2;m.position.y=y;return m}
+function ball(r,c,y,x,z){const m=new THREE.Mesh(new THREE.SphereGeometry(r,20,20),M(c,.3));m.position.set(x||0,y||0,z||0);return m}
+// cake
+const cake=new THREE.Group();
+cake.add(cyl(1.15,.5,.35,0xff4d6d),icing(1.15,.6,0xfff4e0),cyl(.82,.45,.83,0xfff4e0),icing(.82,1.06,0xffb627),cyl(.5,.4,1.25,0xffb627),icing(.5,1.45,0xfff4e0));
+cake.add(ball(.14,0xd0123d,1.6));
+for(let i=0;i<5;i++){const a=i/5*6.28,x=Math.cos(a)*.33,z=Math.sin(a)*.33;
+ const c=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.34,8),M(i%2?0x7bd389:0x4cc9f0));c.position.set(x,1.62,z);
+ const f=new THREE.Mesh(new THREE.ConeGeometry(.055,.17,8),new THREE.MeshBasicMaterial({color:0xffd166}));f.userData.keep=true;f.position.set(x,1.9,z);flames.push(f);cake.add(c,f)}
+cake.position.y=.09;put(cake,new THREE.Vector3(0,.09,0),1.8);
+// fruit and sweets ring
+for(let i=0;i<14;i++){
+ const a=i/14*6.28+.2,r=1.95+(i%2)*.1,h=new THREE.Vector3(Math.cos(a)*r,.32,Math.sin(a)*r),g=new THREE.Group(),k=i%3;
+ if(k===0){g.add(ball(.32,0xd0453d,0));const st=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.16,6),M(0x5a3a1e));st.position.y=.33;const lf=ball(.09,0x7bd389,.38,.08,0);lf.scale.set(1.6,.3,1);g.add(st,lf)}
+ else if(k===1){g.add(ball(.3,0xff8c42,0),ball(.05,0x7bd389,.3))}
+ else{const w=new THREE.Mesh(new THREE.ConeGeometry(.26,.3,20),M(0xffb627));w.rotation.x=Math.PI;w.position.y=-.1;const fr=ball(.28,0xff9ecb,.14);fr.scale.y=.8;g.add(w,fr,ball(.07,0xd0123d,.4))}
+ put(g,h,3+Math.random()*7)}
+for(let i=0;i<3;i++){const a=i*2.1+.9,g=new THREE.Group(),d=new THREE.Mesh(new THREE.TorusGeometry(.26,.13,14,30),M(0xe39b5b));d.rotation.x=Math.PI/2;const ic=new THREE.Mesh(new THREE.TorusGeometry(.26,.115,14,30),M(0xff6fa5));ic.rotation.x=Math.PI/2;ic.position.y=.04;g.add(d,ic);put(g,new THREE.Vector3(Math.cos(a)*1.45,.28,Math.sin(a)*1.45),3+Math.random()*6)}
+// planet that appears as the plate breaks apart
+const cvn=document.createElement('canvas');cvn.width=512;cvn.height=256;const x=cvn.getContext('2d');x.fillStyle='#2a7fd0';x.fillRect(0,0,512,256);x.fillStyle='#4caf50';
+for(let i=0;i<40;i++){x.beginPath();x.ellipse(Math.random()*512,30+Math.random()*196,10+Math.random()*40,8+Math.random()*24,Math.random()*3,0,6.28);x.fill()}
+const globe=new THREE.Mesh(new THREE.SphereGeometry(1.7,48,48),new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cvn),roughness:.8}));
+const halo=new THREE.Mesh(new THREE.SphereGeometry(1.85,32,32),new THREE.MeshBasicMaterial({color:0x6ec6ff,transparent:true,opacity:.18,side:THREE.BackSide}));
+globe.add(halo);globe.scale.setScalar(.001);S.add(globe);
+const earthRot=new THREE.Color(0xa0805a);
+// ground glow ring + dust
+const dust=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0xffb627,size:.05,transparent:true,opacity:.7}));
+const dp=[];for(let i=0;i<500;i++)dp.push((Math.random()-.5)*26,(Math.random()-.2)*14,(Math.random()-.5)*20);
+dust.geometry.setAttribute('position',new THREE.Float32BufferAttribute(dp,3));S.add(dust);
+// resize + pointer + scroll
+function size(){R.setSize(innerWidth,innerHeight,false);C.aspect=innerWidth/innerHeight;C.position.z=innerWidth<700?11:8;C.updateProjectionMatrix()}
+addEventListener('resize',size);size();
+let mx=0,my=0,p=0,tp=0;
+addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+addEventListener('scroll',()=>{tp=Math.min(1,scrollY/(innerHeight*2.2))},{passive:true});
+const t0=performance.now();
+(function loop(){
+ const t=(performance.now()-t0)/1000;
+ p+=(tp-p)*.06;
+ const e=p*p*(3-2*p);
+ grp.rotation.y=reduce?0.4:t*.25+e*3;
+ grp.position.x=innerWidth<700?0:2.2-e*2.2;
+ grp.rotation.x=e*.5;
+ items.forEach((o,i)=>{
+  o.g.position.copy(o.home).addScaledVector(o.dir,o.dist*e);
+  o.g.position.y+=reduce?0:Math.sin(t*1.2+i)*.04*(.3+e);
+  o.g.rotation.x+=o.spin*(1+e*6);o.g.rotation.y+=o.spin*(1+e*6);
+  o.mats.forEach(q=>q.m.color.copy(q.c).lerp(rotC,e*.85));
+ });
+ flames.forEach((f,i)=>{const k=Math.max(0,1-e*5);f.scale.set(k,k*(.8+.3*Math.sin(t*14+i*2)),k)});
+ const ge=Math.max(0,(e-.35)/.65);
+ globe.scale.setScalar(.001+ge*1.1);globe.position.set(innerWidth<700?0:-3.6+ge*.6,2.2-ge*.8,-3);
+ globe.rotation.y=t*.15;globe.material.color.setScalar(1).lerp(earthRot,ge);
+ C.position.x+=(mx*2-C.position.x)*.04;
+ C.position.y+=(3.2-my*2-C.position.y)*.04;
+ C.lookAt(0,.6,0);
+ dust.rotation.y=t*.02;
+ R.render(S,C);
+ requestAnimationFrame(loop);
+})();
+}
+// ---------- reveal on scroll ----------
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// ---------- counters ----------
+const co=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;co.unobserve(x.target);
+ const el=x.target,n=+el.dataset.n,d=+(el.dataset.d||0),s=el.dataset.s||'',dur=reduce?1:1600,st=performance.now();
+ (function f(now){const k=Math.min(1,(now-st)/dur),v=n*(1-Math.pow(1-k,3));el.textContent=v.toFixed(d)+(k===1?s:'');if(k<1)requestAnimationFrame(f)})(st);
+}),{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(el=>co.observe(el));
+// ---------- 3D tilt cards ----------
+document.querySelectorAll('.card').forEach(c=>{
+ c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg) translateZ(10px)`});
+ c.addEventListener('pointerleave',()=>c.style.transform='');
+});
+// ---------- guest calculator ----------
+const g=document.getElementById('g'),gv=document.getElementById('gv'),o=document.getElementById('o');
+function calc(){const n=+g.value;gv.textContent=n;const kg=n*.5,saved=Math.round(kg*.2);o.textContent=`About ${Math.round(kg)} kg of food served. Cutting surplus by 20% saves roughly ${saved} kg, around ${Math.round(saved/.4)} meals.`}
+g.addEventListener('input',calc);calc();
+})();
+</script>
+</body>
+</html>
